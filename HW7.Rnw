@@ -21,9 +21,34 @@
     \item Write a \texttt{pois.prob()} function that computes $P(X=x)$, 
     $P(X \neq x)$, $P(X<x)$, $P(X \leq x)$, $P(X > x)$, and $P(X \geq x).$ Enable the user to specify the rate parameter $\lambda$.
 <<size="scriptsize">>=
-pois.prob <- function(x, size, prob, type="<="){
-  # Use dpois and ppois to conditionally return the correct probability
-}
+pois.prob <- function(x, lambda, type="<="){
+  if(x<0){
+    return("x must be a positive integer")
+  }
+  if(type == "<="){#Less than or equal to
+    return(ppois(x,lambda))
+  }
+  if(type == "="){#Equal to
+    return(dpois(x,lambda))
+  }
+  if(type == "!="){#Not equal to
+    return(1-dpois(x,lambda))
+    }
+  if(type == ">="){# Greater than or equal to
+    return(1-ppois(x-1,lambda))
+    }
+  if(type == ">"){# Greater than
+    return(1-ppois(x,lambda))
+  }
+  if(type == "<"){#Less than
+    return(ppois(x-1,lambda))
+    }
+      
+    
+  }
+
+  
+
 @
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Question 2
@@ -33,9 +58,37 @@ pois.prob <- function(x, size, prob, type="<="){
     for a beta distribution. Enable the user to specify the shape parameters
     $\alpha$ and $\beta$.
 <<size="scriptsize">>=
-beta.prob <- function(x, size, prob, type="<="){
-  # Use dbeta and pbeta to conditionally return the correct probability
+beta.prob <- function(x, alpha, beta, type="<="){
+  if(x<0){
+    return("x must be positive")
+  }
+  if(alpha<0){
+    return("alpha must be positive")
+  }
+  if(beta<0){
+    return("beta must be postive")
+  }
+  if(type == "<="){#Less than or equal to
+    return(pbeta(x,alpha,beta))
+  }
+  if(type == "="){#Equal to
+    return(0)
+  }
+  if(type == "!="){#Not equal to
+    return(1)
+  }
+  if(type == ">="){# Greater than or equal to
+    return(1-pbeta(x,alpha,beta))
+    }
+  if(type == ">"){# Greater than
+    return(1-pbeta(x,alpha,beta))
+  }
+  if(type == "<"){#Less than
+    return(pbeta(x,alpha,beta))
+  }
 }
+
+
 @
 \end{enumerate}
 \bibliography{bibliography}
