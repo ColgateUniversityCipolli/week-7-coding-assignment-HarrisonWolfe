@@ -77,6 +77,9 @@
   \hlkwa{if}\hldef{(x}\hlopt{<}\hlnum{0}\hldef{)\{}
     \hlkwd{return}\hldef{(}\hlsng{"x must be a positive integer"}\hldef{)}
   \hldef{\}}
+  \hlkwa{if}\hldef{(lambda}\hlopt{<}\hlnum{0}\hldef{)\{}
+    \hlkwd{return}\hldef{(}\hlsng{"lambda must be positive"}\hldef{)}
+  \hldef{\}}
   \hlkwa{if}\hldef{(type} \hlopt{==} \hlsng{"<="}\hldef{)\{}\hlcom{#Less than or equal to}
     \hlkwd{return}\hldef{(}\hlkwd{ppois}\hldef{(x,lambda))}
   \hldef{\}}
